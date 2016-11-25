@@ -38,10 +38,12 @@ var ref = firebase.app().database().ref();
 //});
 var email;
 var password2;
+var uname2;
 ref.on("value", function(snapshot) {    
      console.log(snapshot.val());
    email = snapshot.val().email1;
    password2 = snapshot.val().password1;
+    uname2 = snapshot.val().uname1;
     console.log(password2);
     executeStatement(); 
    
@@ -59,8 +61,8 @@ ref.on("child_added", function(newPost,pre) {
     var TYPES = require('tedious').TYPES;  
 
     function executeStatement() {  
-        console.log(password2);
-        request = new Request("insert into firebasedata(email,pasword) values('" + email + "','" + password2+ "')", function(err) {  
+        console.log(uname2);
+        request = new Request("insert into firebasedata(email,pasword,uname) values('" + email + "','" + password2+ "','" + uname2 + "')", function(err) {  
         
             
             if (err) {  
